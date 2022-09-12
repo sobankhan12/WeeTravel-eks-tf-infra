@@ -28,7 +28,7 @@ resource "aws_eip" "nat" {
   vpc = true
 
   tags = {
-    Name = "nat"
+    Name = "eip-nat"
   }
 }
 
@@ -37,7 +37,7 @@ resource "aws_nat_gateway" "nat" {
   subnet_id     = aws_subnet.public-eu-central-1a.id
 
   tags = {
-    Name = "nat"
+    Name = " NatGateway_EKS_Demo"
   }
 
   depends_on = [aws_internet_gateway.igw]
