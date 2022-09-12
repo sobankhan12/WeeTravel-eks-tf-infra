@@ -15,14 +15,14 @@ terraform {
       version = "~> 4.2"
     }
   }
-  # backend "remote" {
-  #   organization = "ansar_SA"
+  backend "remote" {
+  organization = "ansar_SA"
 
-  #   workspaces {
-  #     name = "WeeTravel-eks-tf-infra"
-  #   }
+  workspaces {
+  name = "WeeTravel-eks-tf-infra"
+  }
 
-  # }
+ }
 }
 provider "aws" {
   region = var.region
