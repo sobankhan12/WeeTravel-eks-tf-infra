@@ -1,6 +1,6 @@
 variable "region" {
   type    = string
-  default = "us-east-1"
+  default = "eu-central-1"
 }
 # locals {
 
@@ -29,7 +29,7 @@ variable "private_subnets_cidr" {
 }
 variable "azs" {
   type    = list(string)
-  default = ["us-east-1a", "us-east-1b"]
+  default = ["eu-central-1a", "eu-central-1b"]
 }
 # variable "subnet_ids" {
 #   type    = list(string)

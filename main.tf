@@ -15,14 +15,14 @@ terraform {
       version = "~> 4.2"
     }
   }
-  backend "remote" {
-    organization = "soban252"
+  # backend "remote" {
+  #   organization = "ansar_SA"
 
-    workspaces {
-      name = "eks-testing"
-    }
+  #   workspaces {
+  #     name = "WeeTravel-eks-tf-infra"
+  #   }
 
-}
+  # }
 }
 provider "aws" {
   region = var.region
@@ -58,7 +58,7 @@ module "rds" {
   source     = "./modules/rds"
   vpc_id     = module.vpc.vpc_id
   cidr_block = module.vpc.cidr_block
-  subnet_ids = [module.vpc.public-us-east-1a, module.vpc.public-us-east-1b]
+  subnet_ids = [module.vpc.public-eu-central-1a, module.vpc.public-eu-central-1b]
   depends_on = [
     module.vpc
   ]
@@ -70,11 +70,11 @@ module "rds" {
 module "eks" {
   source         = "./modules/eks"
   vpc_id         = module.vpc.vpc_id
-  eks_subnet_ids = [module.vpc.public-us-east-1a, module.vpc.public-us-east-1b, module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
+  eks_subnet_ids = [module.vpc.public-eu-central-1a, module.vpc.public-eu-central-1b, module.vpc.private-eu-central-1a, module.vpc.private-eu-central-1b]
   depends_on = [
     module.vpc
   ]
-  eks_node_subnets_ids = [module.vpc.private-us-east-1a, module.vpc.private-us-east-1b]
+  eks_node_subnets_ids = [module.vpc.private-eu-central-1a, module.vpc.private-eu-central-1b]
 }
 
 

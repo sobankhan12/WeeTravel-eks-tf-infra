@@ -41,7 +41,7 @@ resource "aws_db_instance" "rds_instance" {
   instance_class       = "db.t2.micro"
   db_name                 = "wetravel"
   username             = "admin"
-  password             = "soban252"
+  password             = "adM!n2022"
   multi_az             = true
   db_subnet_group_name = aws_db_subnet_group.db-subnet.name
   publicly_accessible  = true
@@ -52,7 +52,7 @@ resource "aws_db_instance" "rds_instance" {
     Name = "WeTravel_Task-db"
   }
 #   depends_on = [
-#     aws_subnet.public-us-east-1a,aws_subnet.public-us-east-1b
+#     aws_subnet.public-eu-central-1a,aws_subnet.public-eu-central-1b
 #   ]
 
 }
