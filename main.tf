@@ -16,13 +16,13 @@ terraform {
     }
   }
   backend "remote" {
-  organization = "ansar_SA"
+    organization = "ansar_SA"
 
-  workspaces {
-  name = "WeeTravel-eks-tf-infra"
+    workspaces {
+      name = "WeeTravel-eks-tf-infra"
+    }
+
   }
-
- }
 }
 provider "aws" {
   region = var.region
@@ -48,7 +48,10 @@ module "vpc" {
   # private_subnets_cidr = var.private_subnets_cidr
   # azs = var.azs
 
+}
 
+module "ecr" {
+  source = "./modules/ecr"
 
 }
 
@@ -76,5 +79,3 @@ module "eks" {
   ]
   eks_node_subnets_ids = [module.vpc.private-eu-central-1a, module.vpc.private-eu-central-1b]
 }
-
-
