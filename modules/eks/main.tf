@@ -51,7 +51,7 @@ resource "aws_security_group" "allow_all" {
 }
 
 resource "aws_eks_cluster" "demo" {
-  name     = "demo2"
+  name     = "tf-eks-wetravel"
   role_arn = aws_iam_role.demo.arn
    
   vpc_config {
