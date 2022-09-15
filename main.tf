@@ -61,8 +61,8 @@ module "rds" {
   vpc_id      = module.vpc.vpc_id
   cidr_block  = module.vpc.cidr_block
   db_name     = "WeTravelTask"
-  db_password = "db-password"
-  db_user     = "db-user"
+  db_password = "DbPassword"
+  db_user     = "DbUuser"
   subnet_ids  = [module.vpc.public-eu-central-1a, module.vpc.public-eu-central-1b, module.vpc.public-eu-central-1c]
   depends_on = [
     module.vpc
