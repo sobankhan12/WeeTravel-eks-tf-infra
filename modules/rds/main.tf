@@ -48,6 +48,7 @@ resource "aws_rds_cluster" "tf-rds-wetravel" {
   cluster_identifier        = "tf-rds-wetravel"
   availability_zones        = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
   engine                    = "mysql"
+  engine_version            = "8.0.28"
   db_cluster_instance_class = "db.r6gd.xlarge"
   storage_type              = "io1"
   allocated_storage         = 100
