@@ -31,7 +31,7 @@ resource "aws_security_group" "allow_rds" {
   }
 }
 
-resource "aws_rds_cluster" "default" {
+resource "aws_rds_cluster" "tf-rds-wetravel" {
   allocated_storage       = 60
   cluster_identifier      = "tf-rds-wetravel"
   engine                  = "mysql"
