@@ -62,7 +62,6 @@ resource "aws_db_instance" "read_replica" {
   replicate_source_db         = aws_db_instance.rds_instance.identifier
   instance_class              = "db.t2.micro"
   # multi_az             = true
-  db_subnet_group_name        = aws_db_subnet_group.db-subnet.name
   publicly_accessible         = true
   skip_final_snapshot         = true
   vpc_security_group_ids      = [ aws_security_group.allow_rds.id ]
