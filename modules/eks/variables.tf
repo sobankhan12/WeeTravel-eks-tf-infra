@@ -8,3 +8,7 @@ variable "eks_node_subnets_ids" {
 variable "vpc_id" {
   type = string
 }
+
+variable "region" {
+  type = string
+}

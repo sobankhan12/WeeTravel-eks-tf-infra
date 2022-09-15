@@ -1,5 +1,5 @@
 resource "aws_iam_role" "demo" {
-  name = "eks-cluster-demo"
+  name = "eks-cluster-demo-${var.region}"
 
   assume_role_policy = <<POLICY
 {
@@ -66,7 +66,7 @@ resource "aws_eks_cluster" "demo" {
 
 
 resource "aws_iam_role" "nodes" {
-  name = "eks-node-group-nodes"
+  name = "eks-node-group-nodes-${var.region}"
 
   assume_role_policy = jsonencode({
     Statement = [{
@@ -165,7 +165,7 @@ resource "aws_iam_role" "aws_load_balancer_controller" {
 resource "aws_iam_policy" "aws_load_balancer_controller" {
   # policy = file("./AWSLoadBalancerController.json")
   policy=file("${path.module}/AWSLoadBalancerController.json")
-  name   = "AWSLoadBalancerController"
+  name   = "AWSLoadBalancerController-${var.region}"
 }
 
 resource "aws_iam_role_policy_attachment" "aws_load_balancer_controller_attach" {
