@@ -53,16 +53,18 @@ resource "aws_db_instance" "rds_instance" {
 }
 
 resource "aws_db_instance" "read_replica" {
-  allocated_storage    = 20
-  identifier           = "tf-read-replica-wetravel"
-  storage_type         = "gp2"
-  instance_class       = "db.t2.micro"
+  allocated_storage           = 20
+  identifier                  = "tf-read-replica-wetravel"
+  storage_type                = "gp2"
+  instance_class              = "db.t2.micro"
   # multi_az             = true
-  db_subnet_group_name = aws_db_subnet_group.db-subnet.name
-  publicly_accessible  = true
-  skip_final_snapshot  = true
-  vpc_security_group_ids = [ aws_security_group.allow_rds.id ]
-  replicate_source_db   = aws_db_instance.rds_instance.id
+  db_subnet_group_name        = aws_db_subnet_group.db-subnet.name
+  publicly_accessible         = true
+  skip_final_snapshot         = true
+  backup_retention_period     = 7
+  backup_window               = "22:00-03:00"
+  vpc_security_group_ids      = [ aws_security_group.allow_rds.id ]
+  replicate_source_db         = aws_db_instance.rds_instance.id
 
   tags = {
     Name = "WeTravel_Task-db"
