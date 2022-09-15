@@ -49,6 +49,7 @@ resource "aws_db_instance" "rds_instance" {
   maintenance_window      = "Mon:00:00-Mon:03:00"
   backup_window           = "03:00-06:00"
   backup_retention_period = 1
+  apply_immediately = "true"
 
   tags = {
     Name = "WeTravel_Task-db"
