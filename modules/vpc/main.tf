@@ -70,7 +70,7 @@ resource "aws_subnet" "private-eu-central-1b" {
 
 resource "aws_subnet" "private-eu-central-1c" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.0.5.0/24"
+  cidr_block        = "10.0.6.0/24"
   availability_zone = "eu-central-1c"
   tags = {
     "Name"                            = "private-eu-central-1c"
