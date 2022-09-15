@@ -46,25 +46,30 @@ resource "aws_db_instance" "rds_instance" {
   publicly_accessible  = true
   skip_final_snapshot  = true
   vpc_security_group_ids = [ aws_security_group.allow_rds.id ]
+  maintenance_window      = "Mon:00:00-Mon:03:00"
+  backup_window           = "03:00-06:00"
+  backup_retention_period = 1
 
   tags = {
     Name = "WeTravel_Task-db"
   }
 }
 
+
+
+
 resource "aws_db_instance" "read_replica" {
   allocated_storage           = 20
   identifier                  = "tf-read-replica-wetravel"
-  storage_type                = "gp2"
+  replicate_source_db         = aws_db_instance.rds_instance.identifier
   instance_class              = "db.t2.micro"
+  engine                      = "mysql"
+  engine_version              = "8.0.28"
   # multi_az             = true
   db_subnet_group_name        = aws_db_subnet_group.db-subnet.name
   publicly_accessible         = true
   skip_final_snapshot         = true
-  backup_retention_period     = 7
-  backup_window               = "22:00-03:00"
   vpc_security_group_ids      = [ aws_security_group.allow_rds.id ]
-  replicate_source_db         = aws_db_instance.rds_instance.id
 
   tags = {
     Name = "WeTravel_Task-db"
