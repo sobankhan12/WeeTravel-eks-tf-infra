@@ -76,8 +76,6 @@ module "eks" {
   source         = "./modules/eks"
   vpc_id         = module.vpc.vpc_id
   eks_subnet_ids = [module.vpc.public-eu-central-1a, module.vpc.public-eu-central-1b, module.vpc.private-eu-central-1a, module.vpc.private-eu-central-1b]
-  depends_on = [
-    module.vpc
-  ]
+
   eks_node_subnets_ids = [module.vpc.private-eu-central-1a, module.vpc.private-eu-central-1b]
 }
