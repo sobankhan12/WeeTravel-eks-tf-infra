@@ -29,21 +29,37 @@ resource "aws_security_group" "allow_rds" {
   tags = {
     Name = "allow_tls"
   }
+# }
+
+# resource "aws_rds_cluster" "tf-rds-wetravel" {
+#   allocated_storage       = 60
+#   cluster_identifier      = "tf-rds-wetravel"
+#   instance_class          = "db.r4.large"
+#   engine                  = "mysql"
+#   engine_version          = "8.0.28"
+#   db_subnet_group_name = aws_db_subnet_group.db-subnet.name
+#   database_name           = var.db_name
+#   master_username         = var.db_user
+#   master_password         = var.db_password
+#   backup_retention_period = 5
+#   preferred_backup_window = "07:00-09:00"
+# }
+resource "aws_rds_cluster_instance" "cluster_instances" {
+  count              = 2
+  identifier         = "tf-rds-wetravel"
+  cluster_identifier = "tf-rds-wetravel"
+  instance_class     = "db.r4.large"
+  engine             = "mysql"
+  engine_version     = "8.0.28"
 }
 
-resource "aws_rds_cluster" "tf-rds-wetravel" {
-  allocated_storage       = 60
-  cluster_identifier      = "tf-rds-wetravel"
-  engine                  = "mysql"
-  engine_version          = "8.0.28"
-  db_subnet_group_name = aws_db_subnet_group.db-subnet.name
-  database_name           = var.db_name
-  master_username         = var.db_user
-  master_password         = var.db_password
-  backup_retention_period = 5
-  preferred_backup_window = "07:00-09:00"
+resource "aws_rds_cluster" "default" {
+  cluster_identifier = "tf-rds-wetravel"
+  availability_zones = aws_db_subnet_group.db-subnet.name
+  database_name      = var.db_name
+  master_username    = var.db_user
+  master_password    = var.db_password
 }
-
 # resource "aws_db_instance" "rds_instance" {
 #   allocated_storage    = 20
 #   identifier           = "tf-rds-wetravel"
