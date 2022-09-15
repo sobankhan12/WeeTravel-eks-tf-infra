@@ -124,7 +124,7 @@ module "rds_eu_west_2" {
   depends_on = [
     module.vpc_eu_west_2
   ]
-  
+
   providers = {
     aws = "aws.eu-west-2"
   }
@@ -136,8 +136,8 @@ module "eks_eu_central_1" {
   eks_subnet_ids = [module.vpc_eu_central_1.public-1a, module.vpc_eu_central_1.public-1b, module.vpc_eu_central_1.private-1a, module.vpc_eu_central_1.private-1b]
 
   eks_node_subnets_ids = [module.vpc_eu_central_1.private-1a, module.vpc_eu_central_1.private-1b]
-  region = var.region1
-  
+  region               = var.region1
+
   providers = {
     aws = "aws.eu-central-1"
   }
@@ -148,7 +148,7 @@ module "eks_eu_west_2" {
   eks_subnet_ids = [module.vpc_eu_west_2.public-1a, module.vpc_eu_west_2.public-1b, module.vpc_eu_west_2.private-1a, module.vpc_eu_west_2.private-1b]
 
   eks_node_subnets_ids = [module.vpc_eu_west_2.private-1a, module.vpc_eu_west_2.private-1b]
-  region = var.region2
+  region               = var.region2
 
   providers = {
     aws = "aws.eu-west-2"
