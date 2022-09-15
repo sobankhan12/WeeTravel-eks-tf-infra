@@ -47,17 +47,6 @@ provider "aws" {
 #--------------------------------------------------#----------------------------------------------------------------
 
 
-
-# module "vpc" {
-#   source   = "./modules/vpc"
-#   vpc_cidr = var.vpc_cidr
-#   vpc_name = var.vpc_name
-#   # public_subnets_cidr = var.public_subnets_cidr
-#   # private_subnets_cidr = var.private_subnets_cidr
-#   # azs = var.azs
-
-# }
-
 module "vpc_eu_central_1" {
   source   = "./modules/vpc"
   vpc_cidr = var.vpc_cidr
