@@ -55,16 +55,11 @@ resource "aws_db_instance" "rds_instance" {
   }
 }
 
-
-
-
 resource "aws_db_instance" "read_replica" {
   allocated_storage           = 20
   identifier                  = "tf-read-replica-wetravel"
   replicate_source_db         = aws_db_instance.rds_instance.identifier
   instance_class              = "db.t2.micro"
-  engine                      = "mysql"
-  engine_version              = "8.0.28"
   # multi_az             = true
   db_subnet_group_name        = aws_db_subnet_group.db-subnet.name
   publicly_accessible         = true
