@@ -8,3 +8,11 @@ variable "vpc_name" {
     description = "vpc name"
   
 }
+
+variable "region" {
+  type = string
+}
+
+variable "project" {
+  type=string
+}

@@ -1,6 +1,14 @@
-variable "region" {
+# variable "region" {
+#   type    = string
+#   default = "eu-central-1"
+# }
+variable "region1" {
   type    = string
   default = "eu-central-1"
+}
+variable "region2" {
+  type    = string
+  default = "eu-west-2"
 }
 # locals {
 
