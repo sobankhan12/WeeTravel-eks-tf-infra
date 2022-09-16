@@ -19,7 +19,7 @@ terraform {
     organization = "ansar_SA"
 
     workspaces {
-      name = "WeeTravel-eks-tf-infra"
+      name = "WeTravel-eks-tf-infra"
     }
   }
 }
